@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <!-- 
+        挂载点 模板 实例之间的关系
+            实例根据挂载点和模板 自动生成相关内容
+
+     -->
+    <div id="root">
+        
+    </div>
+
+    <!-- 如果不在挂载点中 不会被vue实例影响 -->
+    {{msg}}
+
+    <script>
+        let vm = new Vue({
+            el: "#root",      // Vue实例的挂载点 对应的dom结点
+            template: '<h1>hello {{msg}}</h1>',  // 模板指的是挂载点内部的内容 也可以写到属性template中
+            data: {
+                msg: "hello world"
+            }
+        })
+
+
+    </script>
+</body>
+</html>

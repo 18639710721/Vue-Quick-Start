@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- 
+            插值表达式
+            v-text  
+                会转义成文本
+            v-html
+
+            绑定一个事件
+            v-on:click   简写@click
+            实现点击hello 显示world
+                点击world 显示hello
+
+         -->
+
+         <!-- <div v-text="content"></div>
+         <div v-html="content"></div> -->
+
+        <!-- <div v-on:click="handleClick">
+            {{content}}
+        </div> -->
+
+        <!-- 绑定事件的缩写 -->
+        <div @click="handleClick">
+            {{content}}
+        </div>
+    </div>
+
+
+    <script>
+        let vm = new Vue({
+            el: "#root",
+            // 数据
+            data: {
+                // content: "<h1>hello</h1>"
+                content: "hello"
+            },
+            methods: {
+                handleClick: function() {
+                    if (this.content === "hello") {
+                        this.content = "world"
+                    } else {
+                        this.content = "hello"
+                    }
+                }
+            }
+        })
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        定义事件处理程序
+        1.HTML定义属性(Element Attribute)
+        2.Dom属性(Property)
+            一个元素始终只有一个事件处理程序
+        3.监听器 addEventListener
+            可以让一个按钮同时处理多个click事件
+            删除事件监听器和事件处理程序
+
+        点击按钮 -> 触发事件 -> 捕获事件 -> 处理事件
+
+        事件 事件处理程序
+
+        事件对象 Event Object
+     -->
+     <!-- click处理程序 -->
+    <!-- <button onclick="alert('Click me')">Click me</button> -->
+    <!-- 自定义函数 -->
+    <!-- <button onclick="showAlert()">Click me</button> -->
+
+    <!-- 2.通过dom的property -->
+    <!-- <button id="myButton">Click me!</button> -->
+
+    <button id="myButton">Click me!</button>
+    <script>
+        function showAlert() {
+            alert("hey function!");
+        }
+
+        function secondFunciton(event) {
+            alert("hey second function!");
+            // 显示鼠标坐标
+            alert(`Coordinate: ${event.clientX} - ${event.clientY}`)
+            console.log(event);
+        }
+
+        let btn = document.getElementById("myButton");
+        // 通过绑定dom属性
+        // btn.onclick = showAlert;
+        // btn.onclick = secondFunciton; // 覆盖了这个事件
+
+        // 事件监听器
+        btn.addEventListener("click", showAlert);
+        btn.addEventListener("click", secondFunciton);
+        btn.removeEventListener("click", showAlert);
+
+    </script>
+</body>
+</html>

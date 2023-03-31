@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        异步执行 Asynchronous execution
+            执行超长任务
+                比如向第三方服务器发送网络请求
+                为了避免阻塞导致的死机, 就会让程序异步执行这些超长任务
+        
+        Callback ==> Promise ==> Async Await
+            callback 回导致 callback hell 回调地狱
+            Promise 承诺 状态
+                pending
+                reject
+                resolve
+        
+        fetch请求数据
+        https://jsonplaceholder.typicode.com/
+     -->
+
+     <script>
+        let sentToAirport = true;
+
+        let p = new Promise((resolve, reject) => {
+            // 请求成功的状态
+            if (sentToAirport) {
+                // console.log("sent to airport");
+                // 传递数据
+                resolve("from resolve(): send to airport");
+
+            // 请求失败的状态
+            } else {
+                console.log("from reject(): order cancelled");
+                reject();
+            }
+        })
+
+        // 当resolve时then  可以作为参数传递
+        // 当reject时catch异常  可以作为参数传递
+        p.then((message) => {
+            console.log(`${message}`);
+        }).catch((message) => {
+            console.log(`${message}`);
+        })
+
+        // 实战promise 利用fecth获取数据
+        let f = fetch("https://jsonplaceholder.typicode.com/users");
+
+        f
+        .then(userDate => userDate.json())
+        .then(jsonData => console.log(jsonData))
+        
+
+
+
+     </script>
+     
+
+
+
+    
+</body>
+</html>

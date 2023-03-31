@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        属性绑定  实现html属性和数据项的绑定  ""里面的是一个表达式
+        v-bind:  简写:
+
+        双向数据绑定
+        v-model
+     -->
+    <div id="root">
+        <!-- title属性是鼠标放上去显示的文字说明 -->
+        <!-- <div v-bind:title="title">hello world</div> -->
+        <div
+            :title="title" 
+        >
+        hello world
+        </div>
+
+        <!-- 实现文本框输入数据和data中数据的双向绑定 -->
+        <input v-model="content"/>
+        <div>{{content}}</div>
+    </div>
+    
+    <script>
+        let vm = new Vue({
+            el: "#root",
+            data: {
+                title: "this is hello world",
+                content: "this is content"
+            }
+
+        })
+    </script>
+    
+</body>
+</html>

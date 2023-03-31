@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        实现点击按钮展示和隐藏hello world
+
+        频繁的进行操作的话 选择v-show
+        如果很少进行的话 选择v-if
+
+        v-if
+            如果值为false 删除对应的dom结点
+        v-show
+            修改的css样式 设置为不可见
+
+
+     -->
+    <div id="root">
+        <div v-if="show">hello world</div>
+        <button @click="handleClick">toggle</button>
+        <ul>
+            <li
+               v-for="(item, index) of list"
+               :key="index" 
+            >
+            {{item}}
+            </li>
+        </ul>
+    </div>
+    
+
+
+    <script>
+        let vm = new Vue({
+            el: "#root",
+            data: {
+                show: false,
+                list: [1, 2, 3]
+            },
+            methods: {
+                handleClick: function() {
+                    // 每点击一次 进行取反操作
+                    this.show = !this.show
+                }
+            }
+        })
+    </script>
+</body>
+</html>

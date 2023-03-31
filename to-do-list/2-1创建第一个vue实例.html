@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue入门</title>
+    <!-- 避免页面出现抖屏的情况 -->
+    <script src="./vue.js"></script>
+</head>
+<body>
+
+    <div id="root">
+        {{msg}}
+    </div>
+
+    <script>
+        // 创建一个Vue实例 将一个对象{} 作为参数传给vue实例
+        // 声明式编程 着重于数据的编写
+        let vm = new Vue({
+            el: "#root",      // 页面上挂载的element
+            data: {           // 数据
+                msg: "hello world"
+
+            }
+        })
+
+
+        // 没有vue之前我们都是使用原生js或者jQuery去操作dom树
+        // const dom = document.getElementById("root")
+        // dom.innerHTML = "Hello world"
+    </script>
+
+    
+</body>
+</html>

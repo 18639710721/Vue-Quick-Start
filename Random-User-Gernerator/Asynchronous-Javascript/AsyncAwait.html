@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        async
+        await
+            是等待promise完成任务 所以等待的一定是promise函数
+
+        1.Async Await 更贴近同步执行代码
+        2.Async Await 语法糖 是由promise基础演变
+        3.Async function 会返回Promise object
+        4.Await关键字必须尾随Promise object
+        5.使用Try Catch语句捕捉Async Await出现的错误
+     -->
+
+     <script>
+        // 定义一个异步函数 返回的是promise对象
+        function sendRequest(){
+            return new Promise((resolve, reject) => {
+                // 用setTimeout去模拟成功返回数据
+                setTimeout(() => {
+                    // resolve("John Doe")
+                    reject("Request rejected due to server error")
+                })
+            })
+        }
+
+        // 返回的是一个promise对象
+        // console.log(sendRequest());
+        // let promise = sendRequest();   // 返回的是一个promise对象
+        // promise.then((username) => {
+        //     console.log(username);
+        // })
+
+        // 使用异步函数替换
+        async function getUsername() {
+            try {
+                // let username = await sendRequest();  // 等待一个返回promise对象的函数
+                // console.log(username);
+                // 接受fetch数据
+                let username = await fetch("https://jsonplaceholder.typicode.com/users");
+                username = await username.json(); // 因为是promise对象所以要用await
+                console.log(username);
+
+            } catch (message) {
+                console.log(`Error: ${message}`);
+            }
+        }
+        getUsername();
+        
+
+
+     </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Javascript执行代码
+            同步执行 Synchronous execution
+                顺序执行
+                当执行一个超长任务会造成阻塞 其他任务等待
+            异步执行 Asynchronous execution
+                把超长任务放在Callback Queue中
+                后续任务继续执行 不会造成阻塞
+                当超长任务完成就会返回也结果 也就是回调
+                这个函数也成为callback function 回调函数
+
+                回调函数会作为参数传递到另一个函数中
+                当某种事件发生才会触发回调函数
+                Event Handler 事件处理程序 也是一种callback
+
+                所有的网络请求都可能阻塞程序
+                    到第三方服务器下载图片
+                    到第三方API接口或许数据
+
+        异步执行有效解决Javascript阻塞
+        异步执行需要搭配callback回调函数
+     -->
+
+    <script>
+        // 同步执行 
+        console.log("hello");
+        console.log("world");
+
+
+        // function showAlert() {
+        //     alert("hello world");
+        // }
+
+        // showAlert(); // 直接调用
+
+        // setTimeout(showAlert, 3000);   // 函数作为参数
+        
+        // 回调  1 3 2
+        function show2() {
+            console.log(2);
+        }
+
+
+        console.log(1);
+        // 3秒后回调show2函数
+        setTimeout(show2, 3000);
+        console.log(3);
+
+
+
+    </script>
+    
+</body>
+</html>

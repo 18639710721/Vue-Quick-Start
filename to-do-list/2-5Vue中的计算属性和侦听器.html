@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <!-- 
+        计算属性 性能不错
+            computed
+            当其他属性没有变的时候 会使用上一次计算的缓存值
+            当变换时 会重新就行计算
+
+        侦听器
+            侦听数据的变化 
+            可以在watch写对应的业务逻辑
+
+     -->
+    <div id="root">
+        <input v-model="firstName"/>
+        <input v-model="lastName"/>
+        <div>{{fullName}}</div>
+        <div>{{count}}</div>
+    </div>
+
+    <Script>
+        let vm = new Vue({
+            el: "#root",
+            data: {
+                firstName: "",
+                lastName: "",
+                count: 0
+            }, 
+            // 定义一个计算属性
+            computed:{
+                fullName: function() {
+                    return `${this.firstName} ${this.lastName}`
+                }
+            },
+            watch: {
+                // firstName: function() {
+                //     this.count++;
+                // },
+                // lastName: function() {
+                //     this.count++;
+                // }
+
+                // 也可以写成监听一个计算属性的变化
+                fullName: function() {
+                    this.count++;
+                }
+            }
+            
+        })
+    </Script>
+
+
+</body>
+</html>
