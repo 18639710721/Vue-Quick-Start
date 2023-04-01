@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="a" style="width: 100%; height: 300px; background: lightblue;">
+        <div id="b" style="width: 100%; height: 200px; background: pink;">
+        </div>
+    </div>
+    <script>
+        var a = document.getElementById("a");
+        var b = document.getElementById("b");
+
+        // 默认都是冒泡 从内向外
+        a.addEventListener("click", function(){console.log("a")});
+        b.addEventListener("click", function(){console.log("b")});
+
+        // 捕获事件 发生在冒泡事件之前
+        b.addEventListener("click", function(){console.log("b1")}, true);
+        a.addEventListener("click", function(){console.log("a1")}, true);
+
+        // 再写一个b的冒泡事件
+        b.addEventListener("click", function(){console.log("b3")})  // 会在b之后执行
+
+    </script>
+    
+</body>
+</html>
